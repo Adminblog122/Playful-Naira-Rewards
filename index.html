@@ -614,38 +614,6 @@ if (bgMusic.paused) {
 }
 
 </script>
-  <script>
 
-  // Select the button and the container
-const button = document.getElementById('nairaButton');
-const nairaContainer = document.getElementById('nairaContainer');
-
-// When the button is clicked, create falling Naira signs
-button.addEventListener('click', () => {
-  for (let i = 0; i < 20; i++) { // Adjust the number of falling Naira
-    createNaira();
-  }
-});
-
-function createNaira() {
-  const naira = document.createElement('div');
-  naira.classList.add('naira');
-  naira.innerText = '₦'; // Naira symbol
-
-  // Random horizontal position
-  naira.style.left = Math.random() * window.innerWidth + 'px';
-
-  // Random falling speed (3s to 6s)
-  naira.style.animationDuration = (Math.random() * 3 + 3) + 's';
-
-  // Add to container
-  nairaContainer.appendChild(naira);
-
-  // Remove the Naira sign after it falls
-  setTimeout(() => {
-    naira.remove();
-  }, 6000);
-}
-</script>
 </body>
 </html>
