@@ -31,6 +31,55 @@
     padding:18px;
     -webkit-font-smoothing:antialiased; */
   }
+  /* Container where the Naira signs will fall */
+.naira-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* So clicks pass through */
+  overflow: hidden;
+  z-index: 9999;
+}
+
+/* Each individual Naira sign */
+.naira {
+  position: absolute;
+  top: -50px;
+  font-size: 30px;
+  color: #28a745; /* Green like Naira */
+  animation: fall linear forwards;
+}
+
+/* Falling animation */
+@keyframes fall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0.6;
+  }
+}
+
+/* Optional: Dancing glowing button effect */
+.dance-button {
+  animation: bounceGlow 1.5s infinite;
+}
+
+@keyframes bounceGlow {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 0 10px rgba(0, 123, 255, 0.5);
+  }
+  50% {
+    transform: translateY(-12px);
+    box-shadow: 0 0 20px rgba(0, 123, 255, 1);
+  }
+}
+
 
   .container{
     width:100%;
@@ -172,7 +221,8 @@
        
   <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdf2UfQFddYHFbTB5aB1pBE62gj003-omzpyKEXbWGaBpUfAWppP4zvpWh3ghqeyGzNZJv9-UHHJgrelIx1klxm-Ke9dDac2gT9RBhdmelvN9OMP7DxBT8ycTCayscPq9hyD9klpMKAly2eF1QK0UaGW2YNmzJUOCxiu-v5zcOnJGPdse2nmyiSTh_ZNE/s1600/image-bot-e1a383e49a655527bda709f79c922e2ba6ba71d8.jpg" alt="Icon" style="width:25px; height:25px; margin-right:8px;">
  
-        <div id="bigBtn" class="big-btn" role="button" tabindex="0"><b>🎯 TAP FAST🎯</b> </div>
+        <div class="naira-container" id="nairaContainer" id="bigBtn" class="big-btn" role="button" tabindex="0"><b>🎯 TAP FAST🎯</b> </div> 
+
           <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdf2UfQFddYHFbTB5aB1pBE62gj003-omzpyKEXbWGaBpUfAWppP4zvpWh3ghqeyGzNZJv9-UHHJgrelIx1klxm-Ke9dDac2gT9RBhdmelvN9OMP7DxBT8ycTCayscPq9hyD9klpMKAly2eF1QK0UaGW2YNmzJUOCxiu-v5zcOnJGPdse2nmyiSTh_ZNE/s1600/image-bot-e1a383e49a655527bda709f79c922e2ba6ba71d8.jpg" alt="Icon" style="width:25px; height:25px; margin-right:8px;">
  
       </div>
@@ -608,6 +658,40 @@
 const bgMusic = document.getElementById("bgMusic");
 if (bgMusic.paused) {
   bgMusic.play();
+}
+
+</script>
+  <script>
+
+  // Select the button and the container
+const button = document.getElementById('nairaButton');
+const nairaContainer = document.getElementById('nairaContainer');
+
+// When the button is clicked, create falling Naira signs
+button.addEventListener('click', () => {
+  for (let i = 0; i < 20; i++) { // Adjust the number of falling Naira
+    createNaira();
+  }
+});
+
+function createNaira() {
+  const naira = document.createElement('div');
+  naira.classList.add('naira');
+  naira.innerText = '₦'; // Naira symbol
+
+  // Random horizontal position
+  naira.style.left = Math.random() * window.innerWidth + 'px';
+
+  // Random falling speed (3s to 6s)
+  naira.style.animationDuration = (Math.random() * 3 + 3) + 's';
+
+  // Add to container
+  nairaContainer.appendChild(naira);
+
+  // Remove the Naira sign after it falls
+  setTimeout(() => {
+    naira.remove();
+  }, 6000);
 }
 </script>
 </body>
