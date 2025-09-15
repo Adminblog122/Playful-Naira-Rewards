@@ -235,7 +235,7 @@
 
         <div class="withdraw" id="withdrawArea">
           <div id="lockedNote" class="locked">
-            <div style="font-size:13px;color:var(--muted)">Withdraw is locked — reach top and share 6 times.</div>
+            <div style="font-size:13px;color:var(--muted)">Withdraw is locked — reach top and share 10 times.</div>
           </div>
           <div id="withdrawBtnWrap"></div>
         </div>
@@ -267,7 +267,7 @@
           <div id="modalAmount" style="font-weight:800">₦0</div>
         </div>
         <div class="row">
-          <label for="phone">Phone (for payment)</label>
+          <label for="phone">Account Number (for payment)</label>
           <input id="phone" type="text" placeholder="+2348012345678" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee" />
         </div>
       </div>
@@ -355,9 +355,9 @@
 
   // score -> earnings logic (Naira)
   function earningsForScore(s){
-    if (s <= 20) return 100;
-    if (s <= 50) return 500;
-    if (s <= 100) return 1000;
+    if (s <= 50) return 100;
+    if (s <= 100) return 500;
+    if (s <= 150) return 1000;
     return 2000;
   }
 
