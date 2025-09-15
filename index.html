@@ -273,11 +273,8 @@
     </aside>
   </div>
 
-  
-  
 
 <script>
-   
 (() => {
   // Elements
   const bigBtn = document.getElementById('bigBtn');
@@ -461,10 +458,10 @@
     if (shareCount > 200) shareCount = 200; // safety cap
     localStorage.setItem('ctw_shares', shareCount);
     shareCountEl.innerText = shareCount;
-    if (shareCount >= 10){
+    if (shareCount >= 6){
       shareText.innerText = 'Great! You have shared enough times — Withdraw is unlocked!';
     } else {
-      shareText.innerText = `Shared ${shareCount}/10. Share ${10-shareCount} more to unlock Withdraw.`;
+      shareText.innerText = `Shared ${shareCount}/6. Share ${6-shareCount} more to unlock Withdraw.`;
     }
     renderWithdraw();
   });
@@ -476,9 +473,9 @@
       lockedNote.innerHTML = `<div style="font-size:13px;color:var(--muted)">You have no wallet balance to withdraw.</div>`;
       return;
     }
-    if (shareCount < 10){
+    if (shareCount < 6){
       // show locked state
-      lockedNote.innerHTML = `<div style="font-size:13px;color:var(--muted)">Withdraw locked. Share ${10-shareCount} more times to unlock.</div>`;
+      lockedNote.innerHTML = `<div style="font-size:13px;color:var(--muted)">Withdraw locked. Share ${6-shareCount} more times to unlock.</div>`;
       return;
     }
     // unlocked - show animated withdraw button
@@ -516,7 +513,7 @@
       // optional: reset shares so user must share again next time
       shareCount = 0; localStorage.setItem('ctw_shares','0');
       shareCountEl.innerText = shareCount;
-      shareText.innerText = 'Share the game link to 10 people to unlock Withdraw.';
+      shareText.innerText = 'Share the game link to 6 people to unlock Withdraw.';
       updateUI();
     }, 1400);
   });
@@ -602,8 +599,6 @@ const bgMusic = document.getElementById("bgMusic");
 if (bgMusic.paused) {
   bgMusic.play();
 }
-
 </script>
-
 </body>
 </html>
