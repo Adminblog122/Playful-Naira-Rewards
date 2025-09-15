@@ -22,16 +22,15 @@
   body{
     margin:0;
     font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-   
-  background: radial-gradient(circle at 10% 20%, var(--bg1) 0%, transparent 30%),
+    background: radial-gradient(circle at 10% 20%, var(--bg1) 0%, transparent 30%),
                 radial-gradient(circle at 90% 80%, var(--bg2) 0%, transparent 30%),
-                linear-gradient(120deg,#a1c4fd 0%, #c2e9fb 50%, #f6d365 100%); 
- 
+                linear-gradient(120deg,#a1c4fd 0%, #c2e9fb 50%, #f6d365 100%);
+    display:flex;
     align-items:center;
     justify-content:center;
     padding:18px;
-    
-  } 
+    -webkit-font-smoothing:antialiased;
+  }
 
   .container{
     width:100%;
@@ -44,19 +43,7 @@
     gap:18px;
     align-items:stretch;
   }
-/*   button {
-    animation: bounce 1s infinite;
-  }
 
-  @keyframes bounce {
-    0%, 100% {
-      transform: translateY(0);
-    }
-    50% {
-      transform: translateY(-10px);
-    }
-  }
- */
   @media (max-width:900px){ .container{flex-direction:column;padding:16px} }
 
   /* Left - main */
@@ -176,8 +163,8 @@
       <canvas id="confetti"></canvas>
 
       <div class="title">
-        <h1><b>TAP-To-EARN 🎉</b></h1>
-        <p><b>Beat the high score to earn Naira. Share to unlock Withdraw!</b></p>
+        <h1>Click-to-Earn 🎉</h1>
+        <p>Beat the high score to earn Naira. Share to unlock Withdraw!</p>
       </div>
 
       <div class="center-wrap">
@@ -208,7 +195,7 @@
 
     <aside class="side" aria-label="Controls">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <strong><b></b>Game Controls</b></strong>
+        <strong>Game Controls</strong>
         <small style="color:var(--muted)">Playful • Naira</small>
       </div>
 
