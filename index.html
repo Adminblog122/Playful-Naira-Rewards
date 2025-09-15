@@ -163,12 +163,12 @@
       <canvas id="confetti"></canvas>
 
       <div class="title">
-        <h1>Click-to-Earn 🎉</h1>
+        <h1><b>TAP-TO-EARN 🎉</b></h1>
         <p>Beat the high score to earn Naira. Share to unlock Withdraw!</p>
       </div>
 
       <div class="center-wrap">
-        <div id="bigBtn" class="big-btn" role="button" tabindex="0">🎯 TAP FAST🎯 </div>
+        <div id="bigBtn" class="big-btn" role="button" tabindex="0"><b>🎯 TAP FAST🎯</b> </div>
       </div>
 
       <div class="stats" aria-live="polite">
@@ -195,14 +195,14 @@
 
     <aside class="side" aria-label="Controls">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <strong>Game Controls</strong>
+        <strong><b>Game Controls</b></strong>
         <small style="color:var(--muted)">Playful • Naira</small>
       </div>
 
       <div class="controls" style="margin-top:8px">
         <div class="row">
           <label for="duration">Duration</label>
-          <select id="duration"><option value="5">5s</option><option value="10" selected>10s</option><option value="15">15s</option><option value="30">30s</option></select>
+          <select id="duration"><option value="5">5s</option><option value="10" selected>10s</option><option value="15">15s</option></select>
         </div>
 
         <div class="row">
@@ -228,13 +228,13 @@
 
         <div>
           <strong style="display:block;margin-bottom:8px">Share & Unlock Withdraw</strong>
-          <button id="shareBtn" class="share-btn">Share on WhatsApp (<span id="shareCount">0</span>/6)</button>
-          <div class="share-progress" id="shareText">Share the game link to 6 people to unlock Withdraw.</div>
+          <button id="shareBtn" class="share-btn">Share on WhatsApp (<span id="shareCount">0</span>/10)</button>
+          <div class="share-progress" id="shareText">Share the game link to 10 people to unlock Withdraw.</div>
         </div>
 
         <div class="withdraw" id="withdrawArea">
           <div id="lockedNote" class="locked">
-            <div style="font-size:13px;color:var(--muted)">Withdraw is locked — reach top and share 6 times.</div>
+            <div style="font-size:13px;color:var(--muted)">Withdraw is locked — reach top and share 10 times.</div>
           </div>
           <div id="withdrawBtnWrap"></div>
         </div>
@@ -266,7 +266,7 @@
           <div id="modalAmount" style="font-weight:800">₦0</div>
         </div>
         <div class="row">
-          <label for="phone">Phone (for payment)</label>
+          <label for="phone">Account Number (for payment)</label>
           <input id="phone" type="text" placeholder="+2348012345678" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee" />
         </div>
       </div>
@@ -461,10 +461,10 @@
     if (shareCount > 200) shareCount = 200; // safety cap
     localStorage.setItem('ctw_shares', shareCount);
     shareCountEl.innerText = shareCount;
-    if (shareCount >= 6){
+    if (shareCount >= 10){
       shareText.innerText = 'Great! You have shared enough times — Withdraw is unlocked!';
     } else {
-      shareText.innerText = `Shared ${shareCount}/6. Share ${6-shareCount} more to unlock Withdraw.`;
+      shareText.innerText = `Shared ${shareCount}/10. Share ${10-shareCount} more to unlock Withdraw.`;
     }
     renderWithdraw();
   });
@@ -476,9 +476,9 @@
       lockedNote.innerHTML = `<div style="font-size:13px;color:var(--muted)">You have no wallet balance to withdraw.</div>`;
       return;
     }
-    if (shareCount < 6){
+    if (shareCount < 10){
       // show locked state
-      lockedNote.innerHTML = `<div style="font-size:13px;color:var(--muted)">Withdraw locked. Share ${6-shareCount} more times to unlock.</div>`;
+      lockedNote.innerHTML = `<div style="font-size:13px;color:var(--muted)">Withdraw locked. Share ${10-shareCount} more times to unlock.</div>`;
       return;
     }
     // unlocked - show animated withdraw button
@@ -516,7 +516,7 @@
       // optional: reset shares so user must share again next time
       shareCount = 0; localStorage.setItem('ctw_shares','0');
       shareCountEl.innerText = shareCount;
-      shareText.innerText = 'Share the game link to 6 people to unlock Withdraw.';
+      shareText.innerText = 'Share the game link to 10 people to unlock Withdraw.';
       updateUI();
     }, 1400);
   });
