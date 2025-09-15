@@ -229,8 +229,8 @@
 
         <div>
           <strong style="display:block;margin-bottom:8px">Share & Unlock Withdraw</strong>
-          <button id="shareBtn" class="share-btn">Share on WhatsApp (<span id="shareCount">0</span>/6)</button>
-          <div class="share-progress" id="shareText">Share the game link to 6 people to unlock Withdraw.</div>
+          <button id="shareBtn" class="share-btn">Share on WhatsApp (<span id="shareCount">0</span>/10)</button>
+          <div class="share-progress" id="shareText">Share the game link to 10 people to unlock Withdraw.</div>
         </div>
 
         <div class="withdraw" id="withdrawArea">
@@ -355,9 +355,9 @@
 
   // score -> earnings logic (Naira)
   function earningsForScore(s){
-    if (s <= 50) return 100;
-    if (s <= 100) return 500;
-    if (s <= 150) return 1000;
+    if (s <= 20) return 100;
+    if (s <= 50) return 500;
+    if (s <= 100) return 1000;
     return 2000;
   }
 
