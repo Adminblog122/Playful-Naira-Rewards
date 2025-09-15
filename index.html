@@ -44,6 +44,18 @@
     gap:18px;
     align-items:stretch;
   }
+  button {
+    animation: bounce 1s infinite;
+  }
+
+  @keyframes bounce {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+  }
 
   @media (max-width:900px){ .container{flex-direction:column;padding:16px} }
 
