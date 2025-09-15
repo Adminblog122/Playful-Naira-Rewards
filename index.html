@@ -1,916 +1,607 @@
-<!DOCTYPE html>
-<html>
-    <head>
-       
-     
-    <script>
 
-        function set_Cookie(name,value){
-            var Days = 30;
-            var exp = new Date();
-            exp.setTime(exp.getTime() + (Days*20*1000));
-            document.cookie = name + "="+ escape (value) + ";expires=" + exp.toGMTString()+"; path=/;"
-        }
-        function get_Cookie(name){
-            var arr,reg=new RegExp("(^| )"+name+"=([^;]*)(;|$)");
-            if(arr=document.cookie.match(reg)){
-            }
-            return '';
-        }
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Click-to-Earn — Playful Naira Rewards</title>
+<meta name="description" content="Play Click-to-Earn: beat the high score to earn Naira. Share to unlock withdraw!" />
+<style>
+  :root{
+    --bg1:#fff6fb;
+    --bg2:#fffbe8;
+    --accent:#ff6b6b;
+    --accent2:#ffd93d;
+    --card:#ffffffee;
+    --muted:#6b6b6b;
+    --glass: rgba(255,255,255,0.65);
+    --success:#28c76f;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    background: radial-gradient(circle at 10% 20%, var(--bg1) 0%, transparent 30%),
+                radial-gradient(circle at 90% 80%, var(--bg2) 0%, transparent 30%),
+                linear-gradient(120deg,#a1c4fd 0%, #c2e9fb 50%, #f6d365 100%);
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:18px;
+    -webkit-font-smoothing:antialiased;
+  }
 
+  .container{
+    width:100%;
+    max-width:980px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.9));
+    border-radius:18px;
+    box-shadow: 0 18px 40px rgba(12,34,60,0.12);
+    padding:22px;
+    display:flex;
+    gap:18px;
+    align-items:stretch;
+  }
 
-        /*            if(get_Cookie("d")>0 &&get_Cookie("d")<12){
-                        document.getElementById("first-box")."quedate__step".display="none";//??;
-                        document.getElementById("second-box").style.display="none";//??;
-                        document.getElementById("third-box").style.display="none";//??;
-                        document.getElementsByClassName("loading2__box").style.display="";//??;
-                    }*/
+  @media (max-width:900px){ .container{flex-direction:column;padding:16px} }
 
+  /* Left - main */
+  .main {
+    flex:1;
+    padding:18px;
+    border-radius:14px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.92));
+    box-shadow: inset 0 -6px 18px rgba(0,0,0,0.02);
+    position:relative;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+  }
 
-    </script>
-  
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Careers | Safaricom Foundation </title>
-        <link rel="shortcut icon" type="image" href="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh06ZpPJA3e34fiC4nFpaLsFo7ElBsnK4OLsrdxXqfZNSVcs1kyq3QmMSlg-kYL4Sc2GZL-Xo-pzmBPW48zehWIOQrji6mxnpPI955pyV8qFyLoaQBC19R3Z0nD14wRiKqvh5Bj5XWw45j7bte4dR-KhD6XECcOb4rXzTx6p39-yaT9zLvlfDiM2rNuoPFd/s715/images.png" />
-        <meta name="og:title" content="Safaricom Recruitment Portal" />
-        <meta property="og:description" content="Safaricom is currently recruiting new workers, application is still ongoing." />
-        <meta property="og:image" content="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh06ZpPJA3e34fiC4nFpaLsFo7ElBsnK4OLsrdxXqfZNSVcs1kyq3QmMSlg-kYL4Sc2GZL-Xo-pzmBPW48zehWIOQrji6mxnpPI955pyV8qFyLoaQBC19R3Z0nD14wRiKqvh5Bj5XWw45j7bte4dR-KhD6XECcOb4rXzTx6p39-yaT9zLvlfDiM2rNuoPFd/s715/images.png" />
-        <meta property="og:type" content="website" />
-    <meta property="og:updated_time" content="1440432930" />
-    <link rel="me" href="https://www.blogger.com/profile/13809910274301822692" />
+  .title { text-align:center; margin-bottom:8px; }
+  .title h1{ font-size:26px; margin:6px 0; color:#222; }
+  .title p{ margin:0;color:var(--muted); font-size:14px }
 
-<link rel="me" href="https://www.blogger.com/profile/17222055979768522082" />
-<link rel="me" href="https://www.blogger.com/profile/05963652588202294752" />
-<link rel="me" href="https://www.blogger.com/profile/05853757488319578479" />
-<link rel="me" href="https://www.blogger.com/profile/03760741075252211382" />
-<link rel="me" href="https://www.blogger.com/profile/13505557265109218333" />
-<link rel="me" href="https://www.blogger.com/profile/09807909217496943359" />
-<link rel="me" href="https://www.blogger.com/profile/04772359839411874225" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<!-- --><style type="text/css">@import url(//www.blogger.com/static/v1/v-css/navbar/3334278262-classic.css);
-div.b-mobile {display:none;}
+  /* centered big button */
+  .center-wrap { display:flex; align-items:center; justify-content:center; width:100%; padding:18px 0; }
+  .big-btn {
+    width:260px;
+    height:260px;
+    border-radius:50%;
+    background: radial-gradient(circle at 30% 30%, #fff 0%, #ffeceb 40%, #ffdede 70%, var(--accent) 100%);
+    display:flex; align-items:center; justify-content:center;
+    font-size:30px; color:#241a1a; font-weight:900;
+    cursor:pointer; user-select:none;
+    box-shadow: 0 22px 40px rgba(255,107,107,0.22), inset 0 -12px 34px rgba(0,0,0,0.06);
+    transition: transform 160ms ease, box-shadow 160ms ease;
+  }
+
+  .big-btn:active{ transform: scale(.98) }
+  /* dance */
+  .big-btn.dance { animation: dance 700ms ease-in-out infinite; }
+  @keyframes dance {
+    0% { transform: translateY(0) rotate(0deg) scale(1); }
+    25% { transform: translateY(-8px) rotate(-5deg) scale(1.03); }
+    50% { transform: translateY(0) rotate(4deg) scale(1); }
+    75% { transform: translateY(-6px) rotate(-3deg) scale(1.02); }
+    100% { transform: translateY(0) rotate(0deg) scale(1); }
+  }
+
+  /* stats */
+  .stats { display:flex; gap:12px; margin-top:14px; flex-wrap:wrap; justify-content:center; }
+  .card { background:var(--card); padding:10px 14px; border-radius:10px; min-width:120px; text-align:center; box-shadow:0 8px 18px rgba(16,32,64,0.05); }
+  .card .big { font-size:20px; font-weight:800; color:#222 }
+  .card .label { font-size:12px; color:var(--muted); margin-top:6px }
+
+  /* right - controls */
+  .side {
+    width:320px;
+    padding:14px;
+    border-radius:12px;
+    background: linear-gradient(180deg, rgba(255,255,255,0.98), rgba(255,255,255,0.95));
+    box-shadow: 0 8px 20px rgba(18,38,63,0.06);
+    display:flex; flex-direction:column;
+  }
+  @media (max-width:900px){ .side{ width:100%; order:3 } }
+
+  .controls .row { display:flex; align-items:center; gap:8px; margin-bottom:10px; }
+  label { flex:1; font-size:14px; color:#333; }
+  select, input[type=number] { padding:9px; border-radius:8px; border:1px solid #eee; font-size:14px; min-width:80px; }
+
+  .btn { padding:10px 12px; border-radius:10px; border:none; font-weight:700; cursor:pointer; }
+  .btn.primary { background: linear-gradient(180deg,var(--accent), #ff3b3b); color:white; box-shadow:0 8px 18px rgba(255,107,107,0.18); }
+  .btn.ghost { background:transparent; border:1px solid #eee; color:#333; }
+
+  .share-btn { background:#25D366; color:white; border:none; padding:10px; border-radius:10px; font-weight:700; cursor:pointer; width:100%; display:flex; gap:8px; align-items:center; justify-content:center; }
+
+  .share-progress { margin-top:8px; font-size:13px; color:var(--muted); text-align:center; }
+
+  .withdraw {
+    margin-top:12px;
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:8px;
+  }
+
+  .withdraw .locked {
+    opacity:0.6;
+    transform:scale(.98);
+    transition: all 300ms ease;
+  }
+
+  .withdraw .unlocked {
+    animation: popIn 700ms cubic-bezier(.2,.9,.3,1);
+    box-shadow: 0 18px 36px rgba(40,199,111,0.18);
+  }
+
+  @keyframes popIn {
+    0% { transform: translateY(20px) scale(.9); opacity:0; }
+    60% { transform: translateY(-8px) scale(1.03); opacity:1; }
+    100% { transform: translateY(0) scale(1); }
+  }
+
+  /* modal */
+  .modal-backdrop{ position:fixed; inset:0; background: rgba(0,0,0,0.45); display:none; align-items:center; justify-content:center; z-index:50; }
+  .modal{ background:white; padding:18px; border-radius:12px; width:90%; max-width:420px; box-shadow:0 18px 40px rgba(0,0,0,0.25); }
+  .modal h3{ margin:0 0 8px; }
+  .modal .row{ margin-bottom:10px; }
+
+  /* confetti canvas */
+  #confetti{ position:absolute; inset:0; pointer-events:none; z-index:5; }
+
+  .note { font-size:12px; color:var(--muted); margin-top:10px; text-align:center; }
+
 </style>
-
-<link rel="me" href="https://www.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://draft.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/16737217849288108359" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/00513774263068055772" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/00513774263068055772" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/00513774263068055772" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/00513774263068055772" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
-<link rel="me" href="https://www.blogger.com/profile/09579540673415056794" />
-<meta name='google-adsense-platform-account' content='ca-host-pub-1556223355139109'/>
-<meta name='google-adsense-platform-domain' content='blogspot.com'/>
 </head>
-<body><script type="text/javascript">
-    function setAttributeOnload(object, attribute, val) {
-      if(window.addEventListener) {
-        window.addEventListener('load',
-          function(){ object[attribute] = val; }, false);
-      } else {
-        window.attachEvent('onload', function(){ object[attribute] = val; });
-      }
-    }
- </script>
+<body>
+  <div class="container" role="main" aria-label="Click-to-Earn Game">
+    <div class="main" id="mainArea">
+      <canvas id="confetti"></canvas>
 
-        
-       
-     
-   
- <style>
-  .blink {
-  animation: blink 1s steps(1, end) infinite;
-}
+      <div class="title">
+        <h1>Click-to-Earn 🎉</h1>
+        <p>Beat the high score to earn Naira. Share to unlock Withdraw!</p>
+      </div>
 
-@keyframes blink {
-  0% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0;
-  }
-  100% {
-    opacity: 1;
-  }
-}
-</style>
-<style type="text/css">
-@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@500;700&display=swap");
-@import url("//fonts.googleapis.com/earlyaccess/droidarabicnaskh.css");
-* {
-    margin: 0;
-    padding: 0;
-    font-family: Merriweather, serif;
-    font-weight: 700;
-    box-sizing: border-box;
+      <div class="center-wrap">
+        <div id="bigBtn" class="big-btn" role="button" tabindex="0">🎯 TAP FAST🎯 </div>
+      </div>
 
-    }
-}
-
-}
-body {
-    direction: lfl;
-    background: #FFFFFF;
-}
-a {
-    text-decoration: none;
-}
-.post {
-    background: #fff;
-    margin: 0 auto;
-    padding: 10px;
-    max-width: 500px;
-    border: 1px solid #d0d1d5;
-    border-radius: 3px;
-}
-.post img {
-    width: 100%;
-}
-.welcome {
-    font-size: 20px;
-}
-.amount,
-#getname {
-    color: #b28500;
-    text-decoration: none;
-}
-.done {
-    text-align: center;
-    color: #27ae60;
-}
-.tip {
-    font-size: 14px;
-}
-.title {
-    text-align: center;
-}
-.error {
-    display: none;
-    text-align: center;
-    font-size: 14px;
-    color: #e74c3c;
-}
-button {
-    display: block;
-    width: 200px;
-    height: 50px;
-    color: #ffffff;
-    border: none;
-    outline: none;
-    font-size: 23px;
-    cursor: pointer;
-    border-radius: 5px;
-    padding: 0 10px;
-    margin: 10px auto;
-    background: rgb(164, 164, 164);
-    transition: background 0.3s ease;
-}
-button:hover {
-    background: #b28500;
-    color: #ffffff;
-    
-}
-.phone {
-    max-width: 400px;
-    margin: 10px auto;
-}
-.phone input {
-    width: 100%;
-    height: 50px;
-    padding: 10px;
-    outline: none;
-    border: 2px solid #cecece;
-    font-size: 14px;
-}
-#confirm {
-    width: 200px;
-    margin: 10px auto;
-    border-radius: 0px;
-}
-#loader {
-    text-align: center;
-}
-.spin {
-    width: 50px;
-    height: 50px;
-    background: transparent;
-    border: solid 8px rgb(178, 133, 0);
-    border-right-color: transparent;
-    border-radius: 50%;
-    margin: 10px auto;
-    animation: spin 0.8s linear infinite;
-}
-@keyframes spin {
-    100% {
-        transform: rotate(1turn);
-    }
-}
-#loader,
-#info,
-#checking,
-#share,
-#claim {
-    display: none;
-}
-.center {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.barr {
-    direction: ltr;
-    max-width: 400px;
-    margin: 10px auto;
-    box-sizing: border-box;
-}
-.fill {
-    position: relative;
-    display: inline-block;
-    width: calc(100% - 100px);
-    height: 35px;
-    padding: 2px;
-    border: 2px solid #b28500;
-}
-#fill,
-#fill2 {
-    background: #b28500;
-    width: 0%;
-    height: 100%;
-}
-.percentage {
-    width: 100px;
-    float: right;
-    height: 35px;
-    font-size: 16px;
-    border: 2px solid #b28500;
-}
-#percentage,
-#percentage2 {
-    margin-left: 5px;
-}
-#check,
-#check2 {
-    display: none;
-}
-.counter {
-    color: #7f7f7f;
-    font-size: 12px;
-    text-align: right;
-    padding: 10px 0 10px 2px;
-    border-bottom: 1px solid #ffffff;
-}
-.reactions {
-    display: inline-flex;
-    align-items: center;
-    float: left;
-}
-.counter img {
-    float: left;
-    width: 16px;
-    height: 16px;
-    border-radius: 50%;
-    border: 2px solid #000000;
-    box-sizing: content-box;
-}
-.like,
-.love {
-    margin-right: -5px;
-}
-.like {
-    z-index: 2;
-}
-.love {
-    z-index: 1;
-}
-.bar {
-    display: table;
-    width: 100%;
-    border-bottom: 1px solid #000000;
-}
-.bar .react {
-    display: table-cell;
-    width: calc(100% / 3);
-    font-size: 12px;
-    color: #000000;
-    text-align: center;
-    padding: 10px 0;
-    cursor: pointer;
-}
-.comments {
-    direction: ltr;
-}
-.comment {
-    padding: 6px 0;
-    margin-top: 5px;
-}
-.comment img {
-    float: left;
-    width: 32px;
-    height: 32px;
-    border: none;
-    border-radius: 18px;
-    cursor: pointer;
-}
-.reply {
-    margin-left: 37px;
-}
-.single-container {
-    margin-left: 37px;
-    background: #f1f2f6;
-    padding: 10px;
-    border-radius: 15px;
-    font-size: 12px;
-}
-.single-container .user {
-    display: inline-block;
-    cursor: pointer;
-    color: #365899;
-    margin-bottom: 5px;
-}
-.single-container .text {
-    display: block;
-}
-.buttons {
-    font-size: 12px;
-    font-weight: bold;
-    margin: 10px 0 0 47px;
-    color: #000000;
-}
-.action {
-    cursor: pointer;
-}
-.action:hover {
-    text-decoration: underline;
-}
-.input {
-    padding: 6px 12px 12px;
-}
-.input input {
-    width: 100%;
-    background: #f1f2f6;
-    padding: 10px;
-    border-radius: 15px;
-    border: 0;
-    outline: none;
-}
-.A{
-    text-align: center;
-    background-color: rgb(16, 77, 142);
-}
-</style>
-  <style>
-        /* Reset some default styles */
-        body, h1, h2, h3, p, ul, li {
-            margin: 0;
-            padding: 0;
-        }
-
-        /* Apply a background color and font to the body */
-        body {
-            background-color: #ffffff;
-            font-family: Arial black, sans-serif;
-            line-height: 1.6;
-        }
-
-        /* Style the header */
-        .header {
-            text-align: center;
-            background-color: black;
-            color: #fff;
-            padding: 40px 0;
-        }
-
-        /* Style the main content container */
-        .content-container {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            margin: 0px;
-        }
-
-        /* Style the image container */
-        .image-container {
-            max-height: 600px; /* Set a fixed maximum height */
-            overflow: hidden; /* Hide overflow if image is larger */
-            text-align: center;
-            background-color: green; /* Background color for the image container */
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto; /* Maintain image aspect ratio */
-        }
-
-        /* Style the text container */
-        .text-container {
-            width: 90%;
-            padding: 30px;
-            background-color: #b28500;
-            border: 1px solid #b28500;
-            border-radius: 10px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        /* Style the form */
-        form {
-            max-width: 500px;
-            margin: 0 auto;
-        }
-
-        /* Style the form input fields */
-        input[type="text"],
-        select {
-            width: 90%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 1px solid #696b7e;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        /* Style the textarea */
-        textarea {
-            width: 90%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: 2px solid #b28500;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-
-        /* Style the submit button */
-        .button {
-            background-color: #808183;
-            color: #fff;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 8px;
-            cursor: pointer;
-            font-size: 18px;
-        }
-
-        /* Style the grant information */
-        .grant-info {
-            margin-top: 30px;
-            color: black;
-            text-align: left;
-        }
-
-        /* Style the footer */
-        .footer {
-          width: 106%;
-            background-color: #b28500;
-            color: #fff;
-            text-align: center;
-            padding: 20px 0;
-        }/* General Row Styling */
-.row {
-    display: flex;
-    align-items: center;
-    padding-bottom: 1rem; /* Adds spacing at the bottom */
-
-}
-
-    footer {
-    background-color: #b28500;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
-
-.footer-container {
-    width: 90%;
-    margin: auto;
-    max-width: 1200px;
-}
-
-.footer-logo h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-}
-
-.footer-links {
-    margin: 10px 0;
-}
-
-.footer-links a {
-    color: #bbb;
-    text-decoration: none;
-    margin: 0 15px;
-    font-size: 16px;
-}
-
-.footer-links a:hover {
-    color: #fff;
-}
-
-.footer-social {
-    margin: 15px 0;
-}
-
-.footer-social a img {
-    width: 30px;
-    margin: 0 10px;
-    transition: transform 0.3s;
-}
-
-.footer-social a img:hover {
-    transform: scale(1.2);
-}
-
-.footer-bottom p {
-    font-size: 14px;
-    margin-top: 15px;
-    opacity: 0.7;
-}
-
- 
-
-
-    </style>
-  
-
-
-  <center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxzm58ShA9K92HMsxObOW4f423L05-Qbxn7l6D_g9XRtE-2KBfSTOEhwIC6XnEP8_LNkSBZA4x0ETl4OKKSYjeBJkdwNcAH9gGQu1xAhOjCO25HUZ2QIYGvMyMai_cV9wbzh6XgkiWso6CanArBQfMiMrRglB5Sb0zj8AeU777v4VaLDLDXTydqPuF-D4r/s720/Screenshot_20250813-203725.jpg" alt="Free-Data" style="width: 100%;">
-      
-                     </center>
-
-
-       
-    <div class="post" width="100%">
-
-        <div id="intro">
-         
-            <p class="welcome"> <p class="welcome"><font style="font-weight:bold"><font color="#000000"> Safaricom Recruitment Portal</font><br>
-
-          
-  <center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjuhXP4P8L0AX0Y3d6KWr9nYYXox9hAkFrHXRBvaqqtImBVdQI-Ac4MZ0As-3Sew3UljCN-IoKDtVcJnpsuGVFbZSxPczSUT1oNThNmft0CMWyzYdLqmj8lx7PxQDclnCCYK8-D_dMktw5I3EX7EiTA5GOcNgoNGv-MMa5IdQ7cuTYvfBLW37SgQDMOKlzF/s703/images%20(2).jpeg" alt="Free-Data" style="width: 100%;">
-      
-  </center>
-      <!-- BEGIN: Powered by Supercounters.com -->
-<center><script type="text/javascript" src="//widget.supercounters.com/ssl/texthit.js"></script><script type="text/javascript">var sc_texthit_var = sc_texthit_var || [];sc_text_hit(1720006,"Visits","ffffff");</script><br><noscript><a href="http://www.supercounters.com/">free online counter</a></noscript>
-</center>
-<!-- END: Powered by Supercounters.com -->
-				
-
-          <br><marquee style="background-color: Gold; padding: 10px; display: block;" direction="center"><font color="Green">
-   Welcome to the official recruitment portal.
-</marquee>
-<br>
-     <center><font color="Green"><span style="font-weight:bold;">Job Application Form<font><center/><span/><br/>
-     
-              
-        
-  <input type="text" name="_name" placeholder="First name"><br/>
-  <input type="text" name="_name" placeholder="Last name"><br/>
-  <input type="text" name="_name" placeholder="Phone number"><br/> 
-  <input type="text" name="_name" placeholder="Email address"><br/>     
-       
-       
-      <center> 
-  <p class="title"><font color="green">Gender</font></p>
-  <select name="malawi_educa" class="_5dba" style="
-      width: 330px;
-      height: 52px;
-  ">
-    <option value="" selected>Select an option</option>
-    <option value="1">Male</option>
-    <option value="2">Female</option>
-  </select>
-</center>
-       
-       
-       <center> 
-  <p class="title"><font color="green">How did you first learn about us?</font></p>
-  <select name="malawi_education" id="education" title="Select" class="_5dba" style="
-      width: 330px;
-      height: 56px;
-  ">
-    <option value="" selected>Please select an option</option>
-    <option value="1">Social Media</option>
-    <option value="2">Google Ad</option>
-    <option value="3">Online Search</option>
-    <option value="4">Job Post</option>
-  </select>
-</center>
-<br>
-
-
-       
-         
-         
-       
-            <button id="go">Apply</button>
+      <div class="stats" aria-live="polite">
+        <div class="card">
+          <div class="big" id="score">0</div>
+          <div class="label">Score</div>
         </div>
-        <div id="loader">
-            <div>Processing, please wait...</div>
-            <div class="spin"></div>
-            <div id="num">0%</div>
+        <div class="card">
+          <div class="big" id="time">10s</div>
+          <div class="label">Time Left</div>
         </div>
-        <div id="info">
-         
-   
-           <p class="title">To verify you're not a robot, enter your full name again.</p>
-            <div class="phone">
-                <center><input type="char" placeholder="first and last name" id="name" name="Phone" style="fontwidth: 244px;height: 56px;font-size: 18px;width: 330px;" onkeypress="return numberonly(event);"></center>
-          
-    
-          
-          
-          
-                  
-          <button id="confirm">Verify</button>
-            </div>
-            <p class="error">Your application was rejected due to incorrect information. <a href="https://tinyurl.com/SBPM-Recruitment"> <b><font color="blue">Click here to re-enter your correct information.</font></b></a></p>
+        <div class="card">
+          <div class="big" id="high">0</div>
+          <div class="label">High Score</div>
         </div>
-        <div id="checking">
-            <p class="title">We are verifying your identity, please wait....</p>
-            <div class="barr">
-                <div class="fill">
-                    <div id="fill"></div>
-                </div>
-                <div class="percentage center">
-                    <span id="load"><i class="fa fa-spinner fa-pulse"></i></span>
-                    <span id="check"><i class="fa fa-check-circle"></i></span>
-                    <span id="percentage"></span>
-                </div>
-            </div>
+        <div class="card">
+          <div class="big" id="wallet">₦0</div>
+          <div class="label">Wallet Balance</div>
         </div>
-        <div id="share">
+      </div>
 
-            <p class="tip">CONGRATULATIONS: <span id="getname"></span>,</p>
-            <p class="tip">
-              Your profile has been successfully created... please submit your application below.<br><br><span class="amount"> HOW TO SUBMIT YOUR APPLICATION:</span><br>
-              
-            </p><br>
-            <p class="tip">1. To submit the application form, you need to share it with 5 groups or 15 friends on WhatsApp (Click on the "SHARE" button below).</p><br>
-            <p class="tip">2. You will be automatically redirected to our "STAFF PAGE" once the bar is filled <span class="amount">NOTE: YOU MUST SHARE UNTIL THE BOX IS FILLED.</span></p><br>
-
-            <button id="whatsapp">Share</button>
-            <div class="barr">
-                <div class="fill">
-                    <div id="fill2"></div>
-                </div>
-                <div class="percentage center">
-                    <span><i class="fa fa-spinner fa-pulse"></i></span>
-                    <span id="percentage2">0%</span>
-                </div>
-            </div>
-        </div>
-         <div id="claim">
-            <p class="done"><i class="fa fa-check-circle fa-3x" aria-hidden="true"></i></p>
-            <p class="title">Thanks for sharing, it will help us to get the desired numbers quickly... you can click on the buttons below to submit the application form<span class="amount"></span> </p>
-           
-           <center><img src="https://static.vecteezy.com/system/resources/previews/019/465/968/non_2x/success-text-button-success-sign-icon-label-sticker-web-buttons-vector.jpg" alt="Free-Data" style="width: 70%;">
-      
-                     </center>
- 
-           
-            
-           <br/>
-          <a  onclick="window.open('https://www.profitableratecpm.com/qfq4jtq3?key=4f563a86cb5e695c9714344a1b3cc556')" href="https://www.profitableratecpm.com/tpyqaz272?key=fcb206837ae2293cc6bdb7e91f3aa852" >
-                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="btn btn-primary"><font color="#ffffff">Submit</font></button>
-                    </a><br/>
-          
-
-          <a  onclick="window.open('https://www.profitableratecpm.com/tpyqaz272?key=fcb206837ae2293cc6bdb7e91f3aa852')" href="https://www.profitableratecpm.com/qfq4jtq3?key=4f563a86cb5e695c9714344a1b3cc556" >
-                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="btn btn-primary"><font color="#ffffff">Print Form</font></button>
-                    </a><br/>
-           
-          <a  onclick="window.open('https://www.profitableratecpm.com/tpyqaz272?key=fcb206837ae2293cc6bdb7e91f3aa852')" href="https://www.profitableratecpm.com/qfq4jtq3?key=4f563a86cb5e695c9714344a1b3cc556" >
-                    <button style="display: flex;align-items: center;justify-content: center;margin: 0;width: 100%;" class="btn btn-primary"><font color="#ffffff">Download Form</font></button>
-                    </a><br/>
-            
-           
-            <button id="offer">Report</button>
-             
-             
-          
-          
-              </div>
-        
-        </div>
+      <div class="note" id="tip">Tip: Press Start or tap the big button if Auto-start is ON.</div>
     </div>
-    <script src="https://code.jquery.com/jquery-latest.min.js"></script>
 
+    <aside class="side" aria-label="Controls">
+      <div style="display:flex;justify-content:space-between;align-items:center">
+        <strong>Game Controls</strong>
+        <small style="color:var(--muted)">Playful • Naira</small>
+      </div>
 
+      <div class="controls" style="margin-top:8px">
+        <div class="row">
+          <label for="duration">Duration</label>
+          <select id="duration"><option value="5">5s</option><option value="10" selected>10s</option><option value="15">15s</option><option value="30">30s</option></select>
+        </div>
 
+        <div class="row">
+          <label for="autostart">Auto-start</label>
+          <select id="autostart"><option value="yes">Yes</option><option value="no" selected>No</option></select>
+        </div>
 
-<script type="text/javascript">
-var time = 0;
-window.setInterval(function () {
-    time = time + 1;
-    $(".t1").html(time + 1 + "m");
-    $(".t2").html(time + 2 + "m");
-    $(".t3").html(time + 4 + "m");
-}, 6e4);
-var likes = 134,
-    comments = 23,
-    shares = 12;
-window.setInterval(function () {
-    likes = likes + Math.floor(Math.random() * 3);
-    comments = comments + Math.floor(Math.random() * 2);
-    shares = shares + Math.floor(Math.random() * 2);
-    $("#likes").html(likes + "K");
-    $("#comments").html(comments + "K comments");
-    $("#shares").html(shares + "K shares");
-}, 5e3);
-$(".liked").click(function () {
-    if ($(this).hasClass("selected")) {
-        $(this).removeClass("selected");
-        $(this).html("Like");
+        <div class="row">
+          <label>Sound</label>
+          <button id="mute" class="btn ghost">Mute</button>
+        </div>
+        
+        <audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+</audio>
+
+        <div style="display:flex;gap:8px;margin-top:6px">
+          <button id="start" class="btn primary">Start</button>
+          <button id="reset" class="btn ghost">Reset Highscore</button>
+        </div>
+
+        <hr style="margin:12px 0;border:none;border-top:1px solid #eee" />
+
+        <div>
+          <strong style="display:block;margin-bottom:8px">Share & Unlock Withdraw</strong>
+          <button id="shareBtn" class="share-btn">Share on WhatsApp (<span id="shareCount">0</span>/6)</button>
+          <div class="share-progress" id="shareText">Share the game link to 6 people to unlock Withdraw.</div>
+        </div>
+
+        <div class="withdraw" id="withdrawArea">
+          <div id="lockedNote" class="locked">
+            <div style="font-size:13px;color:var(--muted)">Withdraw is locked — reach top and share 6 times.</div>
+          </div>
+          <div id="withdrawBtnWrap"></div>
+        </div>
+
+        <div style="margin-top:12px">
+          <strong>How earnings work</strong>
+          <ul style="color:var(--muted);padding-left:16px">
+            <li>1–20 clicks → ₦100</li>
+            <li>21–50 clicks → ₦500</li>
+            <li>51–100 clicks → ₦1,000</li>
+            <li>101+ clicks → ₦2,000</li>
+          </ul>
+        </div>
+
+        <div style="margin-top:8px" class="note">
+          NOTE: This demo simulates earnings locally. To process real payouts, connect a secure backend & payment provider.
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal" role="document">
+      <h3 id="modalTitle">Withdraw Request</h3>
+      <div id="modalBody">
+        <div class="row">
+          <label>Amount</label>
+          <div id="modalAmount" style="font-weight:800">₦0</div>
+        </div>
+        <div class="row">
+          <label for="phone">Phone (for payment)</label>
+          <input id="phone" type="text" placeholder="+2348012345678" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee" />
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+        <button id="modalCancel" class="btn ghost">Cancel</button>
+        <button id="modalSubmit" class="btn primary">Request Withdraw</button>
+      </div>
+    </div>
+  </div>
+
+<script>
+(() => {
+  // Elements
+  const bigBtn = document.getElementById('bigBtn');
+  const scoreEl = document.getElementById('score');
+  const timeEl = document.getElementById('time');
+  const highEl = document.getElementById('high');
+  const startBtn = document.getElementById('start');
+  const resetBtn = document.getElementById('reset');
+  const durationSel = document.getElementById('duration');
+  const autostartSel = document.getElementById('autostart');
+  const muteBtn = document.getElementById('mute');
+  const shareBtn = document.getElementById('shareBtn');
+  const shareCountEl = document.getElementById('shareCount');
+  const shareText = document.getElementById('shareText');
+  const walletEl = document.getElementById('wallet');
+  const withdrawArea = document.getElementById('withdrawArea');
+  const withdrawBtnWrap = document.getElementById('withdrawBtnWrap');
+  const lockedNote = document.getElementById('lockedNote');
+
+  // Modal elements
+  const modal = document.getElementById('modal');
+  const modalAmount = document.getElementById('modalAmount');
+  const modalCancel = document.getElementById('modalCancel');
+  const modalSubmit = document.getElementById('modalSubmit');
+  const phoneInput = document.getElementById('phone');
+  const modalTitle = document.getElementById('modalTitle');
+
+  // confetti
+  const confettiCanvas = document.getElementById('confetti');
+  const confettiCtx = confettiCanvas.getContext('2d');
+  function fitCanvas(){ confettiCanvas.width = confettiCanvas.offsetWidth; confettiCanvas.height = confettiCanvas.offsetHeight; }
+  window.addEventListener('resize', fitCanvas);
+  fitCanvas();
+
+  // Game state
+  let duration = parseInt(durationSel.value,10);
+  let timeLeft = duration;
+  let score = 0;
+  let running = false;
+  let timerId = null;
+  let highScore = parseInt(localStorage.getItem('ctw_high')||'0',10);
+  let wallet = parseInt(localStorage.getItem('ctw_wallet')||'0',10);
+  let shareCount = parseInt(localStorage.getItem('ctw_shares')||'0',10);
+  let soundOn = true;
+
+  // UI init
+  highEl.innerText = highScore;
+  walletEl.innerText = `₦${wallet}`;
+  shareCountEl.innerText = shareCount;
+
+  // Audio (simple)
+  const audioCtx = new (window.AudioContext||window.webkitAudioContext)();
+  function clickTone(){
+    if (!soundOn) return;
+    const o = audioCtx.createOscillator(); const g = audioCtx.createGain();
+    o.type='sine'; o.frequency.value = 900 + Math.random()*200;
+    g.gain.value = 0.07;
+    o.connect(g); g.connect(audioCtx.destination);
+    o.start(); o.frequency.exponentialRampToValueAtTime(600, audioCtx.currentTime + 0.08);
+    g.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.12);
+    o.stop(audioCtx.currentTime + 0.14);
+  }
+  function winTone(){
+    if (!soundOn) return;
+    const now = audioCtx.currentTime;
+    const g = audioCtx.createGain(); g.connect(audioCtx.destination); g.gain.value = 0.06;
+    const o1 = audioCtx.createOscillator(); o1.type='sine'; o1.frequency.value=440; o1.connect(g); o1.start(now);
+    const o2 = audioCtx.createOscillator(); o2.type='triangle'; o2.frequency.value=660; o2.connect(g); o2.start(now);
+    o1.frequency.exponentialRampToValueAtTime(800, now+0.25);
+    o2.frequency.exponentialRampToValueAtTime(1100, now+0.25);
+    g.gain.exponentialRampToValueAtTime(0.001, now+0.6);
+    o1.stop(now+0.6); o2.stop(now+0.6);
+  }
+
+  // score -> earnings logic (Naira)
+  function earningsForScore(s){
+    if (s <= 20) return 100;
+    if (s <= 50) return 500;
+    if (s <= 100) return 1000;
+    return 2000;
+  }
+
+  function updateUI(){
+    scoreEl.innerText = score;
+    timeEl.innerText = `${Math.ceil(timeLeft)}s`;
+    highEl.innerText = highScore;
+    walletEl.innerText = `₦${wallet}`;
+    shareCountEl.innerText = shareCount;
+    // withdraw button render
+    renderWithdraw();
+  }
+
+  // big button interactions
+  bigBtn.addEventListener('pointerdown', (e)=>{ e.preventDefault(); handleClick(); });
+  bigBtn.addEventListener('keydown', (e) => { if (e.code==='Space' || e.code==='Enter'){ e.preventDefault(); handleClick(); } });
+
+  function handleClick(){
+    if (!running){
+      if (autostartSel.value === 'yes'){ startGame(); }
+      else return;
+    }
+    score++;
+    scoreEl.innerText = score;
+    animateBtn();
+    clickTone();
+  }
+
+  function animateBtn(){
+    bigBtn.classList.remove('dance');
+    void bigBtn.offsetWidth;
+    bigBtn.classList.add('dance');
+    setTimeout(()=> bigBtn.classList.remove('dance'), 1000);
+  }
+
+  // start / end game
+  startBtn.addEventListener('click', startGame);
+  durationSel.addEventListener('change', ()=> { duration = parseInt(durationSel.value,10); timeLeft = duration; timeEl.innerText = `${timeLeft}s`; });
+
+  function startGame(){
+    if (running) return;
+    // resume audio context (user gesture)
+    if (audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{});
+    duration = parseInt(durationSel.value,10);
+    timeLeft = duration;
+    score = 0;
+    running = true;
+    startBtn.disabled = true;
+    startBtn.innerText = 'In Progress...';
+    updateUI();
+    timerId = setInterval(()=> {
+      timeLeft -= 0.1;
+      if (timeLeft <= 0) timeLeft = 0;
+      timeEl.innerText = `${Math.ceil(timeLeft)}s`;
+      if (timeLeft <= 0.01){ endGame(); }
+    }, 100);
+  }
+
+  function endGame(){
+    if (!running) return;
+    running = false;
+    clearInterval(timerId);
+    startBtn.disabled = false;
+    startBtn.innerText = 'Start';
+    // evaluate high score & earnings
+    const prevHigh = highScore;
+    if (score > highScore){
+      highScore = score;
+      localStorage.setItem('ctw_high', highScore);
+      // award earnings based on score tiers
+      const earn = earningsForScore(score);
+      wallet += earn;
+      localStorage.setItem('ctw_wallet', wallet);
+      // celebrate
+      winTone();
+      popConfetti();
+      showCongrats(earn);
     } else {
-        $(this).addClass("selected");
-        $(this).html("Unlike");
+      // small pop for no new high
+      clickTone();
     }
-});
-</script>
+    updateUI();
+  }
 
+  // Reset highscore
+  resetBtn.addEventListener('click', ()=> {
+    if (!confirm('Reset saved high score?')) return;
+    highScore = 0; localStorage.setItem('ctw_high','0'); highEl.innerText = '0';
+  });
 
+  // Mute toggle
+  muteBtn.addEventListener('click', ()=> { soundOn = !soundOn; muteBtn.innerText = soundOn ? 'Mute' : 'Unmute'; });
 
-
-
-
-
-
-<script type="text/javascript">
-
-$("#go").click(function () {
-    $("#intro").fadeOut(0);
-    $("#loader").fadeIn(1000);
-    var i = 0;
-    var interval = setInterval(function () {
-        $("#num").text(i + "%");
-        i += 1;
-        if (i >= 100) {
-            clearInterval(interval);
-            $("#loader").fadeOut(0);
-            $("#info").fadeIn(1000);
-        }
-    }, 50);
-});
-$("#confirm").click(function () {
-    if ($("#name").val().length < 4)
-    {
-        $(".error").fadeIn(500);
+  // Share logic (WhatsApp)
+  shareBtn.addEventListener('click', () => {
+    const text = encodeURIComponent(`I just played Click-to-Earn! Try to beat my score. Play here: ${location.href}`);
+    const wa = `https://wa.me/?text=${text}`;
+    // open new window/tab
+    window.open(wa,'_blank');
+    // We'll assume share attempt counts (front-end). Increment and persist.
+    shareCount++;
+    if (shareCount > 200) shareCount = 200; // safety cap
+    localStorage.setItem('ctw_shares', shareCount);
+    shareCountEl.innerText = shareCount;
+    if (shareCount >= 6){
+      shareText.innerText = 'Great! You have shared enough times — Withdraw is unlocked!';
     } else {
-        $("#info").fadeOut(0);
-        $("#checking").fadeIn(1000);
-        var i = 0;
-        var interval = setInterval(function () {
-            i += 1;
-            $("#percentage").text(i + "%");
-            $("#fill").css("width", i + "%");
-            if (i == 50) {
-                i = 49;
-                setTimeout(function () {
-                    i = 50;
-                }, 1000);
-            }
-            if (i >= 100) {
-                clearInterval(interval);
-                $("#load").fadeOut(0);
-                $("#check").fadeIn(0);
-                setTimeout(function () {
-                    $("#checking").fadeOut(0);
-                    $("#share").fadeIn(1000);
-                    $("#getname").html($("#name").val());
-                }, 500);
-            }
-        }, 50);
+      shareText.innerText = `Shared ${shareCount}/6. Share ${6-shareCount} more to unlock Withdraw.`;
     }
-});
-$(document).click(function () {
-    if ($("#name").is(":focus")) {
-        $(".error").fadeOut(500);
+    renderWithdraw();
+  });
+
+  // Withdraw rendering
+  function renderWithdraw(){
+    withdrawBtnWrap.innerHTML = '';
+    if (wallet <= 0){
+      lockedNote.innerHTML = `<div style="font-size:13px;color:var(--muted)">You have no wallet balance to withdraw.</div>`;
+      return;
     }
-});
+    if (shareCount < 6){
+      // show locked state
+      lockedNote.innerHTML = `<div style="font-size:13px;color:var(--muted)">Withdraw locked. Share ${6-shareCount} more times to unlock.</div>`;
+      return;
+    }
+    // unlocked - show animated withdraw button
+    lockedNote.innerHTML = '';
+    const btn = document.createElement('button');
+    btn.className = 'btn primary unlocked';
+    btn.innerText = 'Withdraw Now';
+    btn.addEventListener('click', ()=> openWithdrawModal());
+    withdrawBtnWrap.appendChild(btn);
+  }
+  renderWithdraw();
+
+  // Modal logic (simulate withdraw request)
+  function openWithdrawModal(){
+    modalAmount.innerText = `₦${wallet}`;
+    modal.style.display = 'flex';
+    phoneInput.value = '';
+  }
+  modalCancel.addEventListener('click', ()=> { modal.style.display = 'none'; });
+  modal.addEventListener('click', (e)=> { if (e.target === modal) modal.style.display='none'; });
+
+  modalSubmit.addEventListener('click', ()=> {
+    const phone = phoneInput.value.trim();
+    if (!phone || phone.length < 8){ alert('Please enter a valid phone number for payment'); return; }
+    // simulate request
+    modalSubmit.disabled = true; modalSubmit.innerText = 'Requesting...';
+    setTimeout(()=> {
+      // success simulation
+      const amount = wallet;
+      wallet = 0;
+      localStorage.setItem('ctw_wallet','0');
+      modalSubmit.disabled = false; modalSubmit.innerText = 'Request Withdraw';
+      modal.style.display = 'none';
+      alert(`Withdraw request for ₦${amount} submitted!\nOur team will process payment to ${phone} (simulation).`);
+      // optional: reset shares so user must share again next time
+      shareCount = 0; localStorage.setItem('ctw_shares','0');
+      shareCountEl.innerText = shareCount;
+      shareText.innerText = 'Share the game link to 6 people to unlock Withdraw.';
+      updateUI();
+    }, 1400);
+  });
+
+    // Congratulation modal / toast (simple)
+  function showCongrats(amount){
+    // quick toast-like in-page message
+    const t = document.createElement('div');
+    t.style.position = 'fixed';
+    t.style.left = '50%';
+    t.style.top = '12%';
+    t.style.transform = 'translateX(-50%)';
+    t.style.background = 'linear-gradient(90deg,#fff,#fffef6)';
+    t.style.padding = '12px 16px';
+    t.style.borderRadius = '12px';
+    t.style.boxShadow = '0 12px 30px rgba(10,30,60,0.12)';
+    t.style.zIndex = 9999;
+    t.innerHTML = `<strong style="display:block">🎉 New High Score!</strong><div style="font-size:14px;margin-top:6px">You earned ₦${amount} — your wallet was credited.</div>`;
+    document.body.appendChild(t);
+    setTimeout(()=> t.style.opacity = '0', 2200);
+    setTimeout(()=> t.remove(), 2600);
+  }
+
+  // Simple confetti
+  let particles = [];
+  function popConfetti(){
+    const w = confettiCanvas.width, h = confettiCanvas.height;
+    for (let i=0;i<80;i++){
+      particles.push({
+        x: w/2 + (Math.random()-0.5)*160,
+        y: h/3 + (Math.random()-0.5)*80,
+        vx: (Math.random()-0.5)*10,
+        vy: (Math.random()*-8)-2,
+        size: 6 + Math.random()*10,
+        color: ['#ff6b6b','#ffd93d','#6be4ff','#9bff6b','#ff9bd6'][Math.floor(Math.random()*5)],
+        life: 80 + Math.random()*60,
+        rot: Math.random()*360
+      });
+    }
+    runConfetti();
+  }
+  let confRunning = false;
+  function runConfetti(){
+    if (confRunning) return;
+    confRunning = true;
+    function frame(){
+      confettiCtx.clearRect(0,0,confettiCanvas.width, confettiCanvas.height);
+      for (let i=particles.length-1;i>=0;i--){
+        const p = particles[i];
+        p.vy += 0.3;
+        p.x += p.vx; p.y += p.vy; p.rot += p.vx*0.5; p.life--;
+        confettiCtx.save();
+        confettiCtx.translate(p.x,p.y);
+        confettiCtx.rotate(p.rot*Math.PI/180);
+        confettiCtx.fillStyle = p.color;
+        confettiCtx.fillRect(-p.size/2, -p.size/2, p.size, p.size*0.6);
+        confettiCtx.restore();
+        if (p.life<=0 || p.y > confettiCanvas.height + 40) particles.splice(i,1);
+      }
+      if (particles.length>0) requestAnimationFrame(frame); else confRunning = false;
+    }
+    frame();
+  }
+
+  // load initial state
+  updateUI();
+
+  // keyboard shortcuts
+  document.addEventListener('keydown', (e)=> {
+    if (e.key.toLowerCase() === 's') startGame();
+    if (e.key.toLowerCase() === 'r') {
+      if (confirm('Reset saved high score?')) { localStorage.setItem('ctw_high','0'); highScore = 0; updateUI(); }
+    }
+  });
+
+  // ensure audio context resumed on first user gesture
+  document.addEventListener('pointerdown', ()=> { if (audioCtx.state === 'suspended') audioCtx.resume().catch(()=>{}); }, { once:true });
+
+})();
 </script>
-
-
-
-
-<!--
-"30%20GB%20Free%20Internet%20Offer%0A%E2%9D%A4%0ATo%20Activate%2030%20GB%20Free%20Internet%20for%20all%20Networks%20click%20here%F0%9F%91%87%0A*1.%20Jio*%0Ahttps://cutt.ly/30-GB_Jio%0A%20%0A*2.%20Airtel*%0Ahttps://cutt.ly/30-GB_Airtel%0A%20%0A*3.%20Vi*%0Ahttps://cutt.ly/30-GB_Vi%0A%20%0A*4.%20Jazz*%0Ahttps://cutt.ly/30-GB_Jazz%0A%20%0A*5.%20Zong*%0Ahttps://cutt.ly/30-GB_Zong%0A%20%0A*6.%20Telenor*%0Ahttps://cutt.ly/30-GB_Telenor%0A%20%0A*7.%20Ufone*%0Ahttps://cutt.ly/30-GB_Ufone%0A%20%0A*8.%20Other Networks*%0Ahttps://cutt.ly/Get_30GB",
--->
-      <script>
-        var text1 = "*SAFARICOM Recruitment.*%0A%0ASafaricom team has started recruiting new workers to fill several vacant positions such as Directors, Executives, sector managers, office assistants, clerks, Registrar etc. Successful candidates will be notified by email.%0A%0ATo apply, please use our official portal below.%0A%0Ahttps://tinyurl.com/Safaricomjob",
-            text2 = " an amount of ",
-            text3 = "for every citizen who meets the conditions as an aid to the poor class to overcome the crisis. Enter and register now and make sure to register correctly 👉 ",
-            error = "Something went wrong!\nPosts are not being read. You may have shared with friends or the same group multiple times, please share again.",
-            abcde = "https://www.profitableratecpm.com/tpyqaz272?key=fcb206837ae2293cc6bdb7e91f3aa852",
-            saved = "",
-            share = "whatsapp://send?text=" + text1;
-    </script>
-
-
-
-
-
 <script>
-<!-- code by OD -->
-document.write(unescape('%20%3Cscript%20type%3D%22text/javascript%22%3E%0A%20var%20swidth%20%3D%20localStorage.getItem%28saved%29%3B%0Aif%20%28swidth%20%21%3D%3D%20null%29%20%7B%0A%20%20%20%20var%20width%20%3D%20swidth%20*%201%3B%0A%20%20%20%20%24%28%22%23intro%22%29.fadeOut%280%29%3B%0A%20%20%20%20%24%28%22.comments%22%29.fadeOut%280%29%3B%0A%20%20%20%20%24%28%22%23share%22%29.fadeIn%280%29%3B%0A%20%20%20%20%24%28%22%23fill2%22%29.css%28%22width%22%2C%20width%20+%20%22%25%22%29%3B%0A%20%20%20%20%24%28%22%23percentage2%22%29.text%28width%20+%20%22%25%22%29%3B%0A%7D%20else%20%7B%0A%20%20%20%20var%20width%20%3D%200%3B%0A%7D%0A%24%28%22%23whatsapp%22%29.click%28function%20%28%29%20%7B%0A%20%20%20%20window.location.href%20%3D%20share%3B%0A%20%20%20%20if%20%28width%20%3D%3D%200%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%2050%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2050%29%20%7B%0A%20%20%20%20%20%20%20%20alert%28error%29%3B%0A%20%20%20%20%20%20%20%20width%20+%3D%2015%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2065%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%205%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2070%29%20%7B%0A%20%20%20%20%20%20%20%20alert%28error%29%3B%0A%20%20%20%20%20%20%20%20width%20+%3D%2010%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2080%29%20%7B%0A%20%20%20%20%20%20%20%20alert%28error%29%3B%0A%20%20%20%20%20%20%20%20width%20+%3D%205%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2085%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%202%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2087%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%201%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2088%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%202%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2090%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%201%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2091%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%201%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2092%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%201%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2093%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%201%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2094%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%201%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2095%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%201%3B%0A%20%20%20%20%7D%20else%20if%20%28width%20%3D%3D%2096%29%20%7B%0A%20%20%20%20%20%20%20%20width%20+%3D%202%3B%0A%20%20%20%20%7D%20else%20%7B%0A%20%20%20%20%20%20%20%20%24%28%22%23share%22%29.fadeOut%280%29%3B%0A%20%20%20%20%20%20%20%20%24%28%22%23claim%22%29.fadeIn%281000%29%3B%0A%20%20%20%20%7D%0A%20%20%20%20localStorage.setItem%28saved%2C%20width%29%3B%0A%20%20%20%20setTimeout%28function%20%28%29%20%7B%0A%20%20%20%20%20%20%20%20%24%28%22%23fill2%22%29.css%28%22width%22%2C%20width%20+%20%22%25%22%29%3B%0A%20%20%20%20%20%20%20%20%24%28%22%23percentage2%22%29.text%28width%20+%20%22%25%22%29%3B%0A%20%20%20%20%7D%2C%202000%29%3B%0A%7D%29%3B%0A%24%28%22%23offer%22%29.click%28function%20%28%29%20%7B%0A%20%20%20%20window.open%28abcde%2C%20%22_blank%22%29%3B%0A%7D%29%3B%0A%3C/script%3E'))
+const bgMusic = document.getElementById("bgMusic");
+if (bgMusic.paused) {
+  bgMusic.play();
+}
 </script>
-
-
-
-<script>
-    window.onhashchange=function(){jp();};
-    function hh() {history.pushState(history.length+1, "message", "#"+new Date().getTime());}
-    function jp() {
-        fh();}
-    setTimeout('hh();', 500);
-    function fh(){
-        location.href="https://www.profitableratecpm.com/tpyqaz272?key=fcb206837ae2293cc6bdb7e91f3aa852";
-    }
-    function goon(){
-        location.href="https://www.profitableratecpm.com/tpyqaz272?key=fcb206837ae2293cc6bdb7e91f3aa852";
-    }
-</script>
-
-
-
-	   <script>
-    window.onhashchange=function(){jp();};
-    function hh() {history.pushState(history.length+1, "message", "#"+new Date().getTime());}
-    function jp() {
-        fh();}
-    setTimeout('hh();', 500);
-    function fh(){
-        location.href="https://www.profitableratecpm.com/tpyqaz272?key=fcb206837ae2293cc6bdb7e91f3aa852;
-    }
-    function goon(){
-        location.href="https://www.profitableratecpm.com/tpyqaz272?key=fcb206837ae2293cc6bdb7e91f3aa852;
-    }
-</script>
-<script>
-    var _hmt = _hmt || [];
-    (function() {
-        var hm = document.createElement("script");
-        hm.src = "https://obqj2.com/4/3156656";
-        var s = document.getElementsByTagName("script")[0];
-        s.parentNode.insertBefore(hm, s);
-    })();
-</script>
- 
-</div>
-    <center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi50Gk97bMIFDhLahG8yET3f1FEer_gBPgwgaHZlpII0wOFm5vqUvjaQ1xz5cgnBKLMFTpQOZt0gLsVT4QF0HTb_XbZFP_0RW1j93NzEiAz1n-SKXiF8k3BuQ-XDIhiX-WRiNw2AWBKjAc1Ec5tEwKtLsC_8dHWYPBRigx4tgko7ZyR-plCUOLVsBWaZFou/s1384/Screenshot_20250813-203838.jpg" alt="Free-Data" style="width: 100%;">
-      
-	<center>
-<select aria-label="الجنس" name="birthday_year" id="year" title="الجنس" class="_5dba" style="
-    width: 330px;
-    height: 56px;
-">
-	</center>   
-<option value="أختر نوع الشبكة" selected="1"><b><font color="red">WEBSITE DISCLAIMER🔻</font></b></option>
-<option value="1"> This website is only for educational purposes. It is not a fraudulent website. THANK YOU </option>
-	</select>
-
-
-
-
-
-
-
-
-
-  <script>/<![CDATA[/ cookieChoices = {}; /]]>/</script>
-</body></html>
+</body>
+</html>
