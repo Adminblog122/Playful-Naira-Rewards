@@ -219,6 +219,63 @@
   color: #aaa;
 }
 
+      /* Robot container (fixed top center) */
+    .robot-top {
+      position: fixed;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 80px;
+      z-index: 9999;
+      pointer-events: none; /* doesn't block clicks by default */
+      opacity: 0;
+      transition: opacity 200ms ease;
+    }
+    .robot-top.visible { opacity: 1; pointer-events: auto; }
+
+    /* Dance animation: up/down + slight rotate (keeps translateX center) */
+    .robot-top.dance {
+      animation: robot-bop 1s ease-in-out infinite;
+    }
+    @keyframes robot-bop {
+      0%   { transform: translateX(-50%) translateY(0) rotate(-2deg); }
+      50%  { transform: translateX(-50%) translateY(-10px) rotate(4deg); }
+      100% { transform: translateX(-50%) translateY(0) rotate(-2deg); }
+    }
+
+    /* Arm wave animations */
+    .arm-left, .arm-right { transform-origin: top center; }
+    .robot-top.dance .arm-left  { animation: left-arm 0.7s ease-in-out infinite; }
+    .robot-top.dance .arm-right { animation: right-arm 0.9s ease-in-out infinite; }
+    @keyframes left-arm  { 0% { transform: rotate(0);} 50% { transform: rotate(-30deg);} 100% { transform: rotate(0);} }
+    @keyframes right-arm { 0% { transform: rotate(0);} 50% { transform: rotate(25deg);} 100% { transform: rotate(0);} }
+
+    /* small shadow under robot */
+    .robot-shadow {
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60%;
+      height: 6px;
+      background: rgba(0,0,0,0.12);
+      border-radius: 50%;
+      filter: blur(4px);
+      transition: transform 200ms ease;
+    }
+    .robot-top.dance .robot-shadow { transform: translateX(-50%) scale(1.05); }
+
+    /* tiny UI styles */
+    #musicPlayBtn {
+      padding: 10px 16px;
+      border-radius: 8px;
+      background:#0d6efd;
+      color:white;
+      border: none;
+      cursor: pointer;
+    }
+  
 
 </style>
 </head>
@@ -227,6 +284,41 @@
     <div class="main" id="mainArea">
       <canvas id="confetti"></canvas>
 
+<h2>Robot Dance Demo</h2>
+  <p>Click the button to play/pause music — the robot will appear and dance while the music plays.</p>
+
+  <button id="musicPlayBtn">Play Music</button>
+
+  <!-- Hidden/kept-but-not-display:none audio (some browsers block display:none) -->
+  <audio id="bg-music" loop>
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Robot element -->
+  <div class="robot-top" id="robotTop" aria-hidden="true">
+    <svg viewBox="0 0 100 100" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Dancing robot">
+      <g transform="translate(10,5)">
+        <rect x="42" y="0" width="4" height="8" rx="2" fill="#444"/>
+        <circle cx="44" cy="0" r="3.5" fill="#ffdd57"/>
+        <rect x="20" y="8" rx="8" ry="8" width="48" height="36" fill="#9ad3ff" stroke="#2b6fa6" stroke-width="2"/>
+        <circle cx="36" cy="26" r="4" fill="#1a1a1a"/>
+        <circle cx="52" cy="26" r="4" fill="#1a1a1a"/>
+        <rect x="36" y="34" width="16" height="4" rx="2" fill="#2b6fa6"/>
+        <rect x="26" y="44" rx="6" ry="6" width="36" height="32" fill="#6fc6ff" stroke="#2b6fa6" stroke-width="2"/>
+        <g class="arm-left" transform="translate(18,48)">
+          <rect x="-8" y="-4" width="12" height="6" rx="3" fill="#9ad3ff" stroke="#2b6fa6" stroke-width="1.2"/>
+          <circle cx="-2" cy="0" r="3" fill="#2b6fa6"/>
+        </g>
+        <g class="arm-right" transform="translate(72,48)">
+          <rect x="-4" y="-4" width="12" height="6" rx="3" fill="#9ad3ff" stroke="#2b6fa6" stroke-width="1.2"/>
+          <circle cx="8" cy="0" r="3" fill="#2b6fa6"/>
+        </g>
+        <rect x="30" y="74" width="10" height="6" rx="2" fill="#2b6fa6"/>
+        <rect x="54" y="74" width="10" height="6" rx="2" fill="#2b6fa6"/>
+      </g>
+    </svg>
+    <div class="robot-shadow"></div>
+  </div>
 
      
 
@@ -369,7 +461,49 @@
   </footer>
 
 
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const audio = document.getElementById('bg-music');
+      const robot = document.getElementById('robotTop');
+      const btn = document.getElementById('musicPlayBtn');
 
+      // Toggle play/pause from the button
+      btn.addEventListener('click', () => {
+        if (audio.paused) {
+          audio.play().catch(()=>{ /* autoplay may block; user initiated click usually allows play */ });
+          btn.textContent = 'Pause Music';
+        } else {
+          audio.pause();
+          btn.textContent = 'Play Music';
+        }
+      });
+
+      // Update robot visibility/animation based on audio state
+      function updateRobot() {
+        // Show and dance while audio is playing
+        if (!audio.paused && audio.currentTime > 0) {
+          robot.classList.add('visible','dance');
+        } else {
+          robot.classList.remove('dance');
+          // small delay then hide so it doesn't flicker
+          setTimeout(() => robot.classList.remove('visible'), 200);
+        }
+      }
+
+      // Listen for audio events
+      ['play','playing','pause','ended','volumechange'].forEach(ev => audio.addEventListener(ev, updateRobot));
+
+      // If audio is already playing (rare), update immediately
+      setTimeout(updateRobot, 100);
+      
+      // Optional: clicking the robot toggles music
+      robot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        if (audio.paused) audio.play();
+        else audio.pause();
+      });
+    });
+  </script>
   
     
   
