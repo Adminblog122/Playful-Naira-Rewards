@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -24,14 +25,12 @@
     background: radial-gradient(circle at 10% 20%, var(--bg1) 0%, transparent 30%),
                 radial-gradient(circle at 90% 80%, var(--bg2) 0%, transparent 30%),
                 linear-gradient(120deg,#a1c4fd 0%, #c2e9fb 50%, #f6d365 100%);
-/*     display:flex;
+    display:flex;
     align-items:center;
     justify-content:center;
     padding:18px;
-    -webkit-font-smoothing:antialiased; */
+    -webkit-font-smoothing:antialiased;
   }
- 
-
 
   .container{
     width:100%;
@@ -156,34 +155,20 @@
 
   .note { font-size:12px; color:var(--muted); margin-top:10px; text-align:center; }
 
-  .full-width-image {
-    width: 100%;
-    height: auto; /* Keeps original proportions */
-    display: block;
-  }
-
 </style>
 </head>
 <body>
   <div class="container" role="main" aria-label="Click-to-Earn Game">
     <div class="main" id="mainArea">
       <canvas id="confetti"></canvas>
-      <h1>💰PLAYFUL NAIRA💰 <br> <center>🎉REWARDS🎉</center></h1>
-     <center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdf2UfQFddYHFbTB5aB1pBE62gj003-omzpyKEXbWGaBpUfAWppP4zvpWh3ghqeyGzNZJv9-UHHJgrelIx1klxm-Ke9dDac2gT9RBhdmelvN9OMP7DxBT8ycTCayscPq9hyD9klpMKAly2eF1QK0UaGW2YNmzJUOCxiu-v5zcOnJGPdse2nmyiSTh_ZNE/s1600/image-bot-e1a383e49a655527bda709f79c922e2ba6ba71d8.jpg"  class="full-width-image" alt="My Photo"></center> 
 
       <div class="title">
-        <h1><b>💰TAP TO EARN💰🎉</b></h1>
+        <h1>Click-to-Earn 🎉</h1>
         <p>Beat the high score to earn Naira. Share to unlock Withdraw!</p>
       </div>
 
       <div class="center-wrap">
-       
-       <img  src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdf2UfQFddYHFbTB5aB1pBE62gj003-omzpyKEXbWGaBpUfAWppP4zvpWh3ghqeyGzNZJv9-UHHJgrelIx1klxm-Ke9dDac2gT9RBhdmelvN9OMP7DxBT8ycTCayscPq9hyD9klpMKAly2eF1QK0UaGW2YNmzJUOCxiu-v5zcOnJGPdse2nmyiSTh_ZNE/s1600/image-bot-e1a383e49a655527bda709f79c922e2ba6ba71d8.jpg" alt="Icon" style="width:25px; height:25px; margin-right:8px;">
- 
-        <div id="bigBtn" class="big-btn" role="button" tabindex="0"><b><span style=" color:red">🎯 TAP FAST🎯</span></b> </div> 
-
-        <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdf2UfQFddYHFbTB5aB1pBE62gj003-omzpyKEXbWGaBpUfAWppP4zvpWh3ghqeyGzNZJv9-UHHJgrelIx1klxm-Ke9dDac2gT9RBhdmelvN9OMP7DxBT8ycTCayscPq9hyD9klpMKAly2eF1QK0UaGW2YNmzJUOCxiu-v5zcOnJGPdse2nmyiSTh_ZNE/s1600/image-bot-e1a383e49a655527bda709f79c922e2ba6ba71d8.jpg" alt="Icon" style="width:25px; height:25px; margin-right:8px;">
- 
+        <div id="bigBtn" class="big-btn" role="button" tabindex="0">🎯 TAP FAST🎯 </div>
       </div>
 
       <div class="stats" aria-live="polite">
@@ -210,14 +195,14 @@
 
     <aside class="side" aria-label="Controls">
       <div style="display:flex;justify-content:space-between;align-items:center">
-        <strong><b>Game Controls</b></strong>
+        <strong>Game Controls</strong>
         <small style="color:var(--muted)">Playful • Naira</small>
       </div>
 
       <div class="controls" style="margin-top:8px">
         <div class="row">
           <label for="duration">Duration</label>
-          <select id="duration"><option value="5">5s</option><option value="10" selected>10s</option><option value="15">15s</option></select>
+          <select id="duration"><option value="5">5s</option><option value="10" selected>10s</option><option value="15">15s</option><option value="30">30s</option></select>
         </div>
 
         <div class="row">
@@ -242,15 +227,14 @@
         <hr style="margin:12px 0;border:none;border-top:1px solid #eee" />
 
         <div>
-          <p><span style="color:red"><b>Share to 10 People on WhatsApp to Unlock The Withdraw Button...</b></span></p>
           <strong style="display:block;margin-bottom:8px">Share & Unlock Withdraw</strong>
-          <button id="shareBtn" class="share-btn">Share on WhatsApp (<span id="shareCount">0</span>/10)</button>
-          <div class="share-progress" id="shareText">Share the game link to 10 people to unlock Withdraw.</div>
+          <button id="shareBtn" class="share-btn">Share on WhatsApp (<span id="shareCount">0</span>/6)</button>
+          <div class="share-progress" id="shareText">Share the game link to 6 people to unlock Withdraw.</div>
         </div>
 
         <div class="withdraw" id="withdrawArea">
           <div id="lockedNote" class="locked">
-            <div style="font-size:13px;color:var(--muted)">Withdraw is locked — reach top and share 10 times.</div>
+            <div style="font-size:13px;color:var(--muted)">Withdraw is locked — reach top and share 6 times.</div>
           </div>
           <div id="withdrawBtnWrap"></div>
         </div>
@@ -265,8 +249,32 @@
           </ul>
         </div>
 
+        <div style="margin-top:8px" class="note">
+          NOTE: This demo simulates earnings locally. To process real payouts, connect a secure backend & payment provider.
+        </div>
       </div>
     </aside>
+  </div>
+
+  <!-- Modal -->
+  <div id="modal" class="modal-backdrop" role="dialog" aria-modal="true">
+    <div class="modal" role="document">
+      <h3 id="modalTitle">Withdraw Request</h3>
+      <div id="modalBody">
+        <div class="row">
+          <label>Amount</label>
+          <div id="modalAmount" style="font-weight:800">₦0</div>
+        </div>
+        <div class="row">
+          <label for="phone">Phone (for payment)</label>
+          <input id="phone" type="text" placeholder="+2348012345678" style="width:100%;padding:10px;border-radius:8px;border:1px solid #eee" />
+        </div>
+      </div>
+      <div style="display:flex;gap:8px;justify-content:flex-end;margin-top:10px">
+        <button id="modalCancel" class="btn ghost">Cancel</button>
+        <button id="modalSubmit" class="btn primary">Request Withdraw</button>
+      </div>
+    </div>
   </div>
 
 <script>
