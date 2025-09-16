@@ -226,7 +226,9 @@
     text-align: center;
   }
 }
-
+#bg-music {
+  display: none;
+}
 
 </style>
 </head>
@@ -247,6 +249,7 @@
          <audio autoplay loop>
   <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
 </audio>
+         <button onclick="toggleMusic()">🎵 Play / Pause</button>
 
       </div><hr>
 
@@ -371,7 +374,17 @@
     </div>
   </footer>
 
+<script>
+  const bgMusic = document.getElementById('bg-music');
 
+  function toggleMusic() {
+    if (bgMusic.paused) {
+      bgMusic.play();
+    } else {
+      bgMusic.pause();
+    }
+  }
+</script>
     
   
 <script>
