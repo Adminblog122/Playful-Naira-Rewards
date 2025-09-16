@@ -226,9 +226,21 @@
     text-align: center;
   }
 }
-#bg-music {
-  display: none;
-}
+audio {
+      display: none;
+    }
+
+     #music-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #0d6efd;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+    }
 
 </style>
 </head>
@@ -246,10 +258,11 @@
               
         <p>Beat the high score to earn Naira. Share to unlock Withdraw!</p>
          
-         <audio autoplay loop>
-  <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
-</audio>
-         <button onclick="toggleMusic()">🎵 Play / Pause</button>
+         <audio autoplay loop muted id="bg-music">
+    <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+  </audio>
+         
+         <button id="music-btn"> 🎵 Play / Pause</button>
 
       </div><hr>
 
@@ -375,16 +388,28 @@
   </footer>
 
 <script>
-  const bgMusic = document.getElementById('bg-music');
+   const bgMusic = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-btn');
 
-  function toggleMusic() {
-    if (bgMusic.paused) {
-      bgMusic.play();
-    } else {
-      bgMusic.pause();
-    }
-  }
-</script>
+    // Unmute music when the user first interacts with the page
+    document.body.addEventListener('click', () => {
+      if (bgMusic.muted) {
+        bgMusic.muted = false;
+        bgMusic.play();
+      }
+    });
+ 
+    // Play / Pause button
+    musicBtn.addEventListener('click', () => {
+      if (bgMusic.paused) {
+        bgMusic.play();
+        musicBtn.textContent = "Pause Music";
+      } else {
+        bgMusic.pause();
+        musicBtn.textContent = "Play Music";
+      }
+    });
+  </script>
     
   
 <script>
