@@ -288,6 +288,51 @@
     audio {
       display: none;
     }
+
+
+   /* Welcome screen style */
+#welcome-screen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  color: white;
+  text-align: center;
+  z-index: 10000;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+#welcome-screen h1 {
+  font-size: 2.5rem;
+  margin-bottom: 10px;
+  animation: fadeIn 1.5s ease;
+}
+
+#welcome-screen p {
+  font-size: 1.2rem;
+  opacity: 0.8;
+  animation: fadeIn 2s ease;
+}
+
+/* Fade-in effect */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(20px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* Hidden state */
+#welcome-screen.hidden {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
 </style>
 </head>
 <body>
@@ -341,7 +386,12 @@
      
 
 
-       
+       <!-- Welcome Screen -->
+<div id="welcome-screen">
+  <h1>🎉 Welcome to My Website</h1>
+  <p>Loading, please wait...</p>
+</div>
+
       <h1>💰PLAYFUL NAIRA💰 <br> <center>🎉REWARDS🎉</center></h1>
      <center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdf2UfQFddYHFbTB5aB1pBE62gj003-omzpyKEXbWGaBpUfAWppP4zvpWh3ghqeyGzNZJv9-UHHJgrelIx1klxm-Ke9dDac2gT9RBhdmelvN9OMP7DxBT8ycTCayscPq9hyD9klpMKAly2eF1QK0UaGW2YNmzJUOCxiu-v5zcOnJGPdse2nmyiSTh_ZNE/s1600/image-bot-e1a383e49a655527bda709f79c922e2ba6ba71d8.jpg"  class="full-width-image" alt="My Photo"></center> 
 
@@ -484,7 +534,20 @@
     </div>
   </footer>
 
+<script>
+  window.addEventListener('load', () => {
+    const welcome = document.getElementById('welcome-screen');
 
+    // Hide the welcome screen after 3 seconds
+    setTimeout(() => {
+      welcome.classList.add('hidden');
+      document.body.style.overflow = 'auto'; // Enable scrolling
+    }, 3000); // 3000 = 3 seconds
+  });
+</script>
+
+
+   
 <script>
     const audio = document.getElementById('bg-music');
     const robot = document.getElementById('robotTop');
