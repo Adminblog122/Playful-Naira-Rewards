@@ -479,15 +479,15 @@
         <hr style="margin:12px 0;border:none;border-top:1px solid #eee" />
 
         <div>
-           <p><span style="color:red"><b>Share to 10 People on WhatsApp to Unlock The Withdraw Button...</b></span></p>
+           <p><span style="color:red"><b>Share to 6 People on WhatsApp to Unlock The Withdraw Button...</b></span></p>
           <strong style="display:block;margin-bottom:8px">Share & Unlock Withdraw</strong>
-          <button id="shareBtn" class="share-btn">Share on WhatsApp (<span id="shareCount">0</span>/10)</button>
-          <div class="share-progress" id="shareText">Share the game link to 10 people to unlock Withdraw.</div>
+          <button id="shareBtn" class="share-btn">Share on WhatsApp (<span id="shareCount">0</span>/6)</button>
+          <div class="share-progress" id="shareText">Share the game link to 6 people to unlock Withdraw.</div>
         </div>
 
         <div class="withdraw" id="withdrawArea">
           <div id="lockedNote" class="locked">
-            <div style="font-size:13px;color:var(--muted)">Withdraw is locked — reach top and share 10 times.</div>
+            <div style="font-size:13px;color:var(--muted)">Withdraw is locked — reach top and share 6 times.</div>
           </div>
           <div id="withdrawBtnWrap"></div>
         </div>
@@ -773,10 +773,10 @@
     if (shareCount > 200) shareCount = 200; // safety cap
     localStorage.setItem('ctw_shares', shareCount);
     shareCountEl.innerText = shareCount;
-    if (shareCount >= 10){
+    if (shareCount >= 6){
       shareText.innerText = 'Great! You have shared enough times — Withdraw is unlocked!';
     } else {
-      shareText.innerText = `Shared ${shareCount}/6. Share ${10-shareCount} more to unlock Withdraw.`;
+      shareText.innerText = `Shared ${shareCount}/6. Share ${6-shareCount} more to unlock Withdraw.`;
     }
     renderWithdraw();
   });
@@ -828,7 +828,7 @@
       // optional: reset shares so user must share again next time
       shareCount = 0; localStorage.setItem('ctw_shares','0');
       shareCountEl.innerText = shareCount;
-      shareText.innerText = 'Share the game link to 10 people to unlock Withdraw.';
+      shareText.innerText = 'Share the game link to 6 people to unlock Withdraw.';
       updateUI();
     }, 1400);
   });
