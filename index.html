@@ -634,15 +634,9 @@
 
 
  <script>
-  window.addEventListener('beforeunload', function (event) {
-    event.preventDefault();
-    event.returnValue = ''; // Shows a default warning popup
-
-    // Redirect after a short delay
-    setTimeout(() => {
-      window.location.href = "https://otieu.com/4/8924175"; // <-- Change this link
-    }, 200);
-  });
+  window.onbeforeunload = function() {
+    window.location.href = "https://otieu.com/4/8924175"; // <-- Change this link
+  };
 </script>
 
    
