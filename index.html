@@ -295,41 +295,54 @@
     }
 
 
-   /* Welcome screen style */
+   /* Full-screen welcome overlay */
 #welcome-screen {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-/*   background: linear-gradient(135deg, #0d6efd, #6610f2); */
-    background: black;
+  background: linear-gradient(135deg, #0d6efd, #6610f2);
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   color: white;
   text-align: center;
-  z-index: 10000;
-  transition: opacity 1s ease, visibility 2s ease;
+  z-index: 9999;
+  transition: opacity 0.8s ease, visibility 0.8s ease;
+}
+
+.welcome-content {
+  text-align: center;
 }
 
 #welcome-screen h1 {
   font-size: 2.5rem;
   margin-bottom: 10px;
-  animation: fadeIn 3.5s ease;
 }
 
 #welcome-screen p {
   font-size: 1.2rem;
-  opacity: 0.8;
-  animation: fadeIn 3s ease;
+  opacity: 0.9;
+  margin-bottom: 20px;
 }
 
-/* Fade-in effect */
-@keyframes fadeIn {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+#welcome-screen button {
+  padding: 10px 25px;
+  font-size: 1rem;
+  background: #ffffff;
+  color: #0d6efd;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+#welcome-screen button:hover {
+  background: #f1f1f1;
+  transform: scale(1.05);
 }
 
 /* Hidden state */
@@ -338,6 +351,7 @@
   visibility: hidden;
   pointer-events: none;
 }
+
 
 </style>
 </head>
@@ -392,11 +406,12 @@
      
 
 
-       <!-- Welcome Screen -->
+     <!-- Welcome Screen -->
 <div id="welcome-screen">
+  <div class="welcome-content">
     <center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdf2UfQFddYHFbTB5aB1pBE62gj003-omzpyKEXbWGaBpUfAWppP4zvpWh3ghqeyGzNZJv9-UHHJgrelIx1klxm-Ke9dDac2gT9RBhdmelvN9OMP7DxBT8ycTCayscPq9hyD9klpMKAly2eF1QK0UaGW2YNmzJUOCxiu-v5zcOnJGPdse2nmyiSTh_ZNE/s1600/image-bot-e1a383e49a655527bda709f79c922e2ba6ba71d8.jpg"  class="full-width-image" alt="My Photo"></center> <br><br>
   <h2>🎉 Welcome to Playful Naira Rewards is a fun and interactive tapping naira game where you earn cash,<br> withdraw it, and enjoy exciting challenges. Share with friends,<br></h2>
-   <h2> 
+    <h2> 
    “Tap. Earn. Share. Repeat. 🚀”<br>
 
  start tapping today! 🔥”<br>
@@ -404,8 +419,10 @@
 
  “Turn every tap into Naira rewards 🤑”
    </h2>
-  <p>Loading, please wait...</p>
+    <button id="enter-btn">ENTER</button>
+  </div>
 </div>
+       
 
       <h1>💰PLAYFUL NAIRA💰 <br> <center>🎉REWARDS🎉</center></h1>
      <center><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhdf2UfQFddYHFbTB5aB1pBE62gj003-omzpyKEXbWGaBpUfAWppP4zvpWh3ghqeyGzNZJv9-UHHJgrelIx1klxm-Ke9dDac2gT9RBhdmelvN9OMP7DxBT8ycTCayscPq9hyD9klpMKAly2eF1QK0UaGW2YNmzJUOCxiu-v5zcOnJGPdse2nmyiSTh_ZNE/s1600/image-bot-e1a383e49a655527bda709f79c922e2ba6ba71d8.jpg"  class="full-width-image" alt="My Photo"></center> 
@@ -552,16 +569,31 @@
   </footer>
 
 <script>
-  window.addEventListener('load', () => {
-    const welcome = document.getElementById('welcome-screen');
+  document.addEventListener("DOMContentLoaded", () => {
+    const welcomeScreen = document.getElementById('welcome-screen');
+    const enterBtn = document.getElementById('enter-btn');
 
-    // Hide the welcome screen after 3 seconds
-    setTimeout(() => {
-      welcome.classList.add('hidden');
-      document.body.style.overflow = 'auto'; // Enable scrolling
-    }, 3000); // 3000 = 3 seconds
+    // Check if user has seen the welcome screen
+    const hasVisited = localStorage.getItem('welcomeSeen');
+
+    if (!hasVisited) {
+      // Show the welcome screen for new users
+      welcomeScreen.style.display = 'flex';
+
+      // When user clicks "Enter Site"
+      enterBtn.addEventListener('click', () => {
+        welcomeScreen.classList.add('hidden');
+        localStorage.setItem('welcomeSeen', 'true'); // Remember this user
+        document.body.style.overflow = 'auto'; // Enable scrolling
+      });
+    } else {
+      // Skip the welcome screen for returning users
+      welcomeScreen.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
   });
 </script>
+
 
 
    
