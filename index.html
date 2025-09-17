@@ -778,7 +778,7 @@
   // Share logic (WhatsApp)
   shareBtn.addEventListener('click', () => {
     const text = encodeURIComponent(`🎉 Welcome to Playful Naira Rewards 🤖ROBOT GAME
- I Just Played Tap-to-Earn! Try To Beat My Score And Win Cash 💰 Today. Play here https://tinyurl.com/Playful-niara-rewards: `);
+ I Just Played Tap-to-Earn! Try To Beat My Score And Win Cash 💰 Today. Play here https://tinyurl.com/Playful-niara-rewards: ${location.href}`);
     const wa = `https://wa.me/?text=${text}`;
     // open new window/tab
     window.open(wa,'_blank');
